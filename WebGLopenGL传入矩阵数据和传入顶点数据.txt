@@ -1,0 +1,18 @@
+首先需要初始化顶点数据，顶点数据用getAttribLocation来初始化，
+	var attLocation=gl.getAttribLocation(prg,'position');
+	var attStride=3;
+按照如下方式进行定义，定义完后通过这三条数据和webShader进行绑定（简称）
+
+
+    // 顶点着色器和片段着色器的生成
+    var v_shader = create_shader('vs');
+    var f_shader = create_shader('fs');
+    
+    // 程序对象的生成和连接
+    var prg = create_program(v_shader, f_shader);
+    
+    // attributeLocation的获取
+    var attLocation = gl.getAttribLocation(prg, 'position');
+    
+    // attribute的元素数量(这次只使用 xyz ，所以是3)
+    var attStride = 3;
