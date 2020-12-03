@@ -21,8 +21,9 @@ onload = function(){
 	var prg = create_program(v_shader,f_shader);
 	
 	var attLocation=gl.getAttribLocation(prg,'position');
+	var attLocation2=gl.getAttribLocation(prg,'color');
 	var attStride=3;
-	
+	var attStride2=4;
 	var vertex_position=[
 		0.0,1.0,0.0,
 		1.0,0.0,0.0,
@@ -31,12 +32,30 @@ onload = function(){
 	
 	];
 
-	var vbo = create_vbo(vertex_position);
 	
+	var vertex_color = [
+    	1.0, 0.0, 0.0, 1.0,
+    	0.0, 1.0, 0.0, 1.0,
+    	0.0, 0.0, 1.0, 1.0
+	];
+
+
+	var vbo = create_vbo(vertex_position);
+
+
+
 	gl.bindBuffer(gl.ARRAY_BUFFER,vbo);
 	gl.enableVertexAttribArray(attLocation);
 	gl.vertexAttribPointer(attLocation,attStride,gl.FLOAT,false,0,0);
 	
+
+	var color_vbo=create_vbo(vertex_color);
+	
+	gl.bindBuffer(gl.ARRAY_BUFFER,color_vbo);
+	gl.enableVertexAttribArray(attLocation2);
+	gl.vertexAttribPointer(attLocation2,attStride2,gl.FLOAT,false,0,0);
+
+
 	var m=new matIV();
 	
 	var mMatrix =m.identity(m.create());
